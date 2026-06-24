@@ -5,549 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Boundary Blueprint · Vision:MB</title>
   <meta name="description" content="Neuroscience-informed PDF guide for building honest, humane boundaries without burning bridges.">
-  
-  <!-- Typography Import: Inter (UI/Body) & Lora (Premium Editorial Headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  
-  <style>
-    /* --- Visual Identity & Custom Design Tokens (Light Default) --- */
-    :root {
-      --bg-base: #fbfaf7;          /* Warm linen/neutral canvas */
-      --bg-surface: #ffffff;       /* Pure surface containers */
-      --bg-surface-muted: #f4f1ea; /* Soft shaded elements */
-      
-      --text-main: #232624;        /* Deep charcoal for maximum legibility */
-      --text-muted: #5a5f5c;       /* Low-cognitive-load secondary text */
-      --text-light: #7c827f;       /* Subtle utility/meta labels */
-      
-      --accent: #3d5245;           /* Premium biophilic olive green */
-      --accent-hover: #29382f;     /* Deepened active states */
-      --accent-light: #e9ece9;     /* Soft tinted accents */
-      
-      --border-color: #e6e2da;     /* Minimalist fine structural lines */
-      --radius: 8px;               /* Clean, organic corner softening */
-      --transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                    color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-                    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* --- Dark Mode Variables Overrides --- */
-    [data-theme="dark"] {
-      --bg-base: #131514;          /* Soft obsidian charcoal canvas */
-      --bg-surface: #1a1d1b;       /* Muted dark container surfaces */
-      --bg-surface-muted: #212422; /* Shaded dark elements */
-      
-      --text-main: #f4f1ea;        /* Warm linen white for readability */
-      --text-muted: #a2a8a4;       /* Soft readable gray */
-      --text-light: #707672;       /* Subdued meta labels */
-      
-      --accent: #6b8575;           /* Lighter, accessible biophilic sage green */
-      --accent-hover: #829c8c;     /* Brightened active states */
-      --accent-light: #222b25;     /* Dark organic tinted accents */
-      
-      --border-color: #2a2d2b;     /* Deep muted structural borders */
-    }
-
-    /* --- Core Reset & Foundations --- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background-color: var(--bg-base);
-      color: var(--text-main);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      transition: var(--transition);
-    }
-
-    .container {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* --- Typography Hierarchy --- */
-    h1, h2, h3 {
-      font-family: 'Lora', Georgia, serif;
-      font-weight: 500;
-      line-height: 1.25;
-      color: var(--text-main);
-      transition: var(--transition);
-    }
-
-    h1 { font-size: 3rem; letter-spacing: -0.02em; }
-    h2 { font-size: 2.25rem; letter-spacing: -0.01em; }
-    h3 { font-size: 1.5rem; }
-
-    p { margin-bottom: 1.25rem; color: var(--text-muted); transition: var(--transition); }
-    p:last-child { margin-bottom: 0; }
-
-    /* --- Interactive Elements & Buttons --- */
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.875rem 1.75rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 500;
-      border-radius: var(--radius);
-      transition: var(--transition);
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .btn.primary {
-      background-color: var(--accent);
-      color: var(--bg-base);
-      box-shadow: 0 4px 12px rgba(61, 82, 69, 0.08);
-    }
-
-    .btn.primary:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(61, 82, 69, 0.15);
-    }
-
-    .btn.secondary {
-      background-color: transparent;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-    }
-
-    .btn.secondary:hover {
-      background-color: var(--accent-light);
-      transform: translateY(-1px);
-    }
-
-    /* --- Premium Header Layout --- */
-    .site-header {
-      background-color: rgba(251, 250, 247, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 1.25rem 0;
-      transition: var(--transition);
-    }
-
-    [data-theme="dark"] .site-header {
-      background-color: rgba(19, 21, 20, 0.85);
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: 'Lora', serif;
-      font-size: 1.35rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--text-main);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav-links a:not(.nav-cta) {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-
-    .nav-links a:not(.nav-cta):hover {
-      color: var(--accent);
-    }
-
-    .nav-cta {
-      background-color: var(--accent-light);
-      color: var(--accent) !important;
-      padding: 0.5rem 1rem;
-      border-radius: var(--radius);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .nav-cta:hover {
-      background-color: var(--accent);
-      color: var(--bg-base) !important;
-    }
-
-    /* Minimalist Theme Controller Toggle Switch */
-    .theme-toggle {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem;
-      border-radius: var(--radius);
-      transition: var(--transition);
-    }
-
-    .theme-toggle:hover {
-      color: var(--accent);
-      background-color: var(--bg-surface-muted);
-    }
-
-    .theme-toggle svg {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* Control visible icon states dynamically */
-    [data-theme="dark"] .theme-toggle .sun-icon { display: block; }
-    [data-theme="dark"] .theme-toggle .moon-icon { display: none; }
-    .theme-toggle .sun-icon { display: none; }
-    .theme-toggle .moon-icon { display: block; }
-
-    /* --- Immersive Hero Section --- */
-    .hero {
-      padding: 7.5rem 0 6rem 0;
-      background: radial-gradient(circle at 80% 20%, var(--bg-surface-muted) 0%, var(--bg-base) 60%);
-      transition: var(--transition);
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 4.5rem;
-      align-items: center;
-    }
-
-    .eyebrow {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 1.2rem;
-    }
-
-    .hero h1 {
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      max-width: 540px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-secondary-links {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-    }
-
-    .hero-secondary-links a {
-      color: var(--text-muted);
-      border-bottom: 1px solid transparent;
-    }
-
-    .hero-secondary-links a:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-
-    .hero-secondary-links span {
-      color: var(--border-color);
-    }
-
-    .hero-note {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      font-style: italic;
-    }
-
-    /* Hero Product Card Frame */
-    .hero-card {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 3rem;
-      box-shadow: 0 12px 40px rgba(35, 38, 36, 0.03);
-      position: relative;
-      transition: var(--transition);
-    }
-
-    [data-theme="dark"] .hero-card {
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 4px;
-      background-color: var(--accent);
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-      transition: var(--transition);
-    }
-
-    .card-label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-light);
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-card h2 {
-      font-size: 1.85rem;
-      margin-bottom: 1rem;
-    }
-
-    .card-text {
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-    }
-
-    .card-list {
-      list-style: none;
-      margin-bottom: 2.5rem;
-    }
-
-    .card-list li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.85rem;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-
-    .card-list li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      transition: var(--transition);
-    }
-
-    .hero-card .btn {
-      width: 100%;
-    }
-
-    /* --- Structural Grid Sections --- */
-    .section {
-      padding: 6.5rem 0;
-      border-top: 1px solid var(--border-color);
-      transition: var(--transition);
-    }
-
-    .section-header {
-      max-width: 680px;
-      margin-bottom: 4rem;
-    }
-
-    .section-header h2 {
-      margin-bottom: 1rem;
-    }
-
-    .section-header p {
-      font-size: 1.1rem;
-    }
-
-    /* Flex Grid layouts */
-    .grid {
-      display: grid;
-      gap: 2.5rem;
-    }
-
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-
-    /* Minimal Card Styles */
-    .section .card {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      transition: var(--transition);
-    }
-
-    .section .card:hover {
-      border-color: var(--text-light);
-      box-shadow: 0 8px 24px rgba(35, 38, 36, 0.02);
-    }
-
-    [data-theme="dark"] .section .card:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    .section .card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 1rem;
-      color: var(--text-main);
-    }
-
-    .section .card p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .section-cta {
-      margin-top: 3.5rem;
-    }
-
-    /* --- Specific Section Modifications --- */
-    .section-inside {
-      background-color: var(--bg-surface-muted);
-    }
-
-    .section-note {
-      margin-top: 3.5rem;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .section-note a {
-      color: var(--accent);
-      font-weight: 500;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    .text-link {
-      display: inline-flex;
-      align-items: center;
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .text-link:hover {
-      color: var(--accent-hover);
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    /* FAQ List Layouts */
-    .bullet-list {
-      list-style: none;
-    }
-
-    .bullet-list li {
-      margin-bottom: 1.75rem;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      transition: var(--transition);
-    }
-
-    .bullet-list li strong {
-      color: var(--text-main);
-      transition: var(--transition);
-    }
-
-    /* --- Grounded Footer --- */
-    .site-footer {
-      background-color: #131514;   /* Fixed grounded dark foundation across themes */
-      color: #e6e2da;
-      padding: 5rem 0;
-      border-top: 1px solid var(--border-color);
-      transition: var(--transition);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      text-align: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .footer-links a {
-      color: #a4aaa6;
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: #fbfaf7;
-    }
-
-    .footer-note {
-      font-size: 0.85rem;
-      color: #7c827f;
-    }
-
-    /* --- Responsive Architecture --- */
-    @media (max-width: 968px) {
-      h1 { font-size: 2.5rem; }
-      h2 { font-size: 1.85rem; }
-      
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-      }
-      
-      .grid-3, .grid-2 {
-        grid-template-columns: 1fr;
-      }
-      
-      .site-header {
-        padding: 1rem 0;
-      }
-      
-      .nav-links {
-        gap: 1rem;
-      }
-      
-      .nav-links a:not(.nav-cta) {
-        display: none; /* Simplifies layout for low-cognitive-load mobile viewing */
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <header class="site-header">
     <div class="container header-inner">
       <a href="https://visionmb612.com" class="logo">Vision:MB</a>
@@ -555,19 +18,14 @@
         <a href="https://visionmb612.com">Home</a>
         <a href="https://growthbalancedlife-cmd.github.io/student-teacher-visionmb/">The Student &amp; The Teacher</a>
         <a href="https://growthbalancedlife-cmd.github.io/drop-kitchen-landing/">The D.R.O.P Kitchen</a>
+        <a href="https://growthbalancedlife-cmd.github.io/boundary-blueprint/">Interactive Workbook</a>
         <a href="https://learnerguide.gumroad.com/l/boundaryblueprint" class="nav-cta">Get the Blueprint</a>
-        
-        <!-- Minimal Theme Switcher Control Button -->
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle structural theme coloration">
-          <svg class="sun-icon" viewBox="0 0 24 24"><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-          <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12 3c.132 0 .263 0 .393.007a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 3z"/></svg>
-        </button>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
@@ -578,11 +36,9 @@
             honor your values, and deepen the relationships that matter most.
           </p>
           <div class="hero-actions">
-            <div>
-              <a class="btn primary" href="https://learnerguide.gumroad.com/l/boundaryblueprint" target="_blank" rel="noopener">
-                Get The Boundary Blueprint (PDF)
-              </a>
-            </div>
+            <a class="btn primary" href="https://learnerguide.gumroad.com/l/boundaryblueprint" target="_blank" rel="noopener">
+              Get The Boundary Blueprint (PDF)
+            </a>
             <div class="hero-secondary-links">
               <a href="https://visionmb612.com" target="_blank" rel="noopener">Visit Vision:MB Home</a>
               <span>·</span>
@@ -616,7 +72,7 @@
       </div>
     </section>
 
-    <!-- Outcomes Section -->
+    <!-- Outcomes -->
     <section class="section section-outcomes">
       <div class="container">
         <div class="section-header">
@@ -660,11 +116,15 @@
           <a class="btn primary" href="https://learnerguide.gumroad.com/l/boundaryblueprint" target="_blank" rel="noopener">
             Get The Boundary Blueprint on Gumroad
           </a>
+          <p class="section-note">
+            After you grab the PDF, use the interactive workbook as your living practice space.
+            <a href="https://growthbalancedlife-cmd.github.io/boundary-blueprint/" target="_blank" rel="noopener">Open the workbook companion</a>.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Inside Section -->
+    <!-- Inside -->
     <section class="section section-inside">
       <div class="container">
         <div class="section-header">
@@ -715,7 +175,7 @@
       </div>
     </section>
 
-    <!-- Ecosystem Section -->
+    <!-- Ecosystem -->
     <section class="section section-ecosystem">
       <div class="container">
         <div class="section-header">
@@ -733,7 +193,7 @@
               and care.
             </p>
             <a href="https://learnerguide.gumroad.com/l/boundaryblueprint" target="_blank" rel="noopener" class="text-link">
-              Get the PDF guide &rarr;
+              Get the PDF guide
             </a>
           </div>
           <div class="card">
@@ -743,7 +203,7 @@
               and guide.
             </p>
             <a href="https://growthbalancedlife-cmd.github.io/student-teacher-visionmb/" target="_blank" rel="noopener" class="text-link">
-              Visit the experience &rarr;
+              Visit the experience
             </a>
           </div>
           <div class="card">
@@ -753,14 +213,14 @@
               boundaries around nourishment.
             </p>
             <a href="https://growthbalancedlife-cmd.github.io/drop-kitchen-landing/" target="_blank" rel="noopener" class="text-link">
-              Explore The D.R.O.P Kitchen &rarr;
+              Explore The D.R.O.P Kitchen
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Target Audience Section -->
+    <!-- For who -->
     <section class="section section-forwho">
       <div class="container">
         <div class="section-header">
@@ -804,7 +264,7 @@
       </div>
     </section>
 
-    <!-- Details & FAQ Section -->
+    <!-- Details & FAQ -->
     <section class="section section-details">
       <div class="container">
         <div class="section-header">
@@ -815,7 +275,7 @@
         </div>
         <div class="grid grid-2">
           <div>
-            <h3 style="margin-bottom: 1.5rem;">Details</h3>
+            <h3>Details</h3>
             <ul class="bullet-list">
               <li><strong>Format:</strong> PDF digital guide.</li>
               <li><strong>Delivery:</strong> Instant download via Gumroad after purchase.</li>
@@ -823,7 +283,7 @@
             </ul>
           </div>
           <div>
-            <h3 style="margin-bottom: 1.5rem;">FAQs</h3>
+            <h3>FAQs</h3>
             <ul class="bullet-list">
               <li>
                 <strong>Is this therapy?</strong><br>
@@ -853,37 +313,12 @@
         <a href="https://learnerguide.gumroad.com/l/boundaryblueprint" target="_blank" rel="noopener">Boundary Blueprint on Gumroad</a>
         <a href="https://growthbalancedlife-cmd.github.io/student-teacher-visionmb/" target="_blank" rel="noopener">The Student &amp; The Teacher</a>
         <a href="https://growthbalancedlife-cmd.github.io/drop-kitchen-landing/" target="_blank" rel="noopener">The D.R.O.P Kitchen</a>
+        <a href="https://growthbalancedlife-cmd.github.io/boundary-blueprint/" target="_blank" rel="noopener">Workbook Companion</a>
       </div>
       <p class="footer-note">
         Part of the Vision:MB ecosystem for a growth-balanced life.
       </p>
     </div>
   </footer>
-
-  <!-- Intelligent Theme Syncing Engine Script -->
-  <script>
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    
-    // Retrieve cached choice or check native operating system preference defaults
-    const currentTheme = localStorage.getItem('theme') || 
-                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    
-    // Initial runtime instantiation execution
-    if (currentTheme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-
-    // Toggle interaction controller event listener
-    themeToggleBtn.addEventListener('click', () => {
-      let theme = 'light';
-      if (document.documentElement.getAttribute('data-theme') !== 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        theme = 'dark';
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-      }
-      localStorage.setItem('theme', theme);
-    });
-  </script>
 </body>
 </html>
